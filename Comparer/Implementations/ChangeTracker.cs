@@ -12,27 +12,27 @@ namespace Comparer.Implementations
     class ChangeTracker : ISegmentComparer
     {
         protected IEnumerable<ISegment> Segments { get; set; }
-        protected IEnumerable<IProcessedSegment> ResultingSegments { get; set; }
+        public List<IProcessedSegment> ResultingSegments { get; set; }
     
         public ChangeTracker(IEnumerable<ISegment> segments)
         {
             Segments = segments;
+            CompareSegments();
         }
 
 
 
-        public IEnumerable<IProcessedSegment> CompareSegments(IEnumerable<ISegment> segments)
+        internal void CompareSegments()
         {
-            foreach (ISegment segment in segments)
+            foreach (ISegment segment in Segments)
             {
                 IProcessedSegment newSegment = new ProcessedSegment(segment);
                 Differ diff = new Differ();
                 newSegment.ComparisonResult = diff.CreateCharacterDiffs(segment.OriginalTranslation,
                                                     segment.EditedTranslation, false);
+                ResultingSegments.Add(newSegment);
 
             }
-
-            return ResultingSegments;
         }
 
     }

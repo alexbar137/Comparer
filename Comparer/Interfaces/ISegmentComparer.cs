@@ -8,6 +8,6 @@ namespace Comparer.Interfaces
 {
     public interface ISegmentComparer
     {
-        IEnumerable<IProcessedSegment> CompareSegments (IEnumerable<ISegment> segments);
+        List<IProcessedSegment> ResultingSegments { get; set; }
     }
 }
