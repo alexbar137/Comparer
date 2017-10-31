@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Comparer.Interfaces
 {
-    public interface ISegmentComparer
+    public interface ICompareService
     {
-        List<ISegment> Segments { get; set; }
+        ICompareResult Compare(ISegment segment);
     }
 }

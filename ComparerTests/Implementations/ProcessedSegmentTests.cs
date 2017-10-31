@@ -20,25 +20,6 @@ namespace Comparer.Implementations.Tests
             FirstSegment = new Segment("First", "Исходный перевод", "Исправленный перевод");
         }
 
-        [TestMethod()]
-        public void ProcessedSegmentConstructor_Source()
-        {
-            ProcessedSegment ps = new ProcessedSegment(FirstSegment);
-            Assert.AreEqual(ps.Source, "First");
-        }
-
-        [TestMethod]
-        public void ProcessedSegmentConstructor_Original()
-        {
-            ProcessedSegment ps = new ProcessedSegment(FirstSegment);
-            Assert.AreEqual(ps.OriginalTranslation, "Исходный перевод");
-        }
-
-        [TestMethod]
-        public void ProcessedSegmentConstructor_Target()
-        {
-            ProcessedSegment ps = new ProcessedSegment(FirstSegment);
-            Assert.AreEqual(ps.EditedTranslation, "Исправленный перевод");
-        }
+       
     }
 }

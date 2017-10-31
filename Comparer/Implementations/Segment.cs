@@ -12,7 +12,8 @@ namespace Comparer.Implementations
         public string EditedTranslation { get; set; }
         public string OriginalTranslation { get; set; }
         public string Source { get; set; }
-        
+        public ICompareResult CompareResult { get; set; }
+
         public Segment(string source, string original, string edited)
         {
             this.Source = source;

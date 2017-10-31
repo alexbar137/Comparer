@@ -11,12 +11,21 @@ namespace Comparer.Implementations
 {
     class ChangeTracker : ISegmentComparer
     {
-        protected IEnumerable<ISegment> Segments { get; set; }
-        public List<IProcessedSegment> ResultingSegments { get; set; }
+        public List<ISegment> Segments { get; set; }
+        ICompareService _service;
+        
     
+        public ChangeTracker(IEnumerable<ISegment> segments, ICompareService service)
+        {
+            Segments = segments as List<ISegment>;
+            _service = service;
+            CompareSegments();
+        }
+
         public ChangeTracker(IEnumerable<ISegment> segments)
         {
-            Segments = segments;
+            Segments = segments as List<ISegment>;
+            _service = new DiffPlexCompareService();
             CompareSegments();
         }
 
@@ -26,12 +35,7 @@ namespace Comparer.Implementations
         {
             foreach (ISegment segment in Segments)
             {
-                IProcessedSegment newSegment = new ProcessedSegment(segment);
-                Differ diff = new Differ();
-                newSegment.ComparisonResult = diff.CreateCharacterDiffs(segment.OriginalTranslation,
-                                                    segment.EditedTranslation, false);
-                ResultingSegments.Add(newSegment);
-
+                segment.CompareResult = _service.Compare(segment);
             }
         }
 

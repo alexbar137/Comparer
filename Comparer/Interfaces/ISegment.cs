@@ -11,5 +11,6 @@ namespace Comparer.Interfaces
         string Source { get; set; }
         string OriginalTranslation { get; set; }
         string EditedTranslation { get; set; }
+        ICompareResult CompareResult { get; set; }
     }
 }
