@@ -12,13 +12,13 @@ namespace Comparer.Implementations
     class DiffPlexCompareService : ICompareService
     {
 
-        private ICompareResult _result;
+        private List<IDiffBlock> _result;
         private Differ _diff;
         private DiffResult _diffResult;
 
-        public ICompareResult Compare(ISegment segment)
+        public List<IDiffBlock> Compare(ISegment segment)
         {
-            _result = new CompareResult();
+            _result = new List<IDiffBlock>();
             _diff = new Differ();
             _diffResult = _diff.CreateCharacterDiffs(segment.OriginalTranslation, 
                 segment.EditedTranslation, false);
@@ -37,7 +37,7 @@ namespace Comparer.Implementations
                 diffBlock.DeleteCount = d.DeleteCountA;
                 diffBlock.InsertStart = d.InsertStartB;
                 diffBlock.InsertCount = d.InsertCountB;
-                _result.DiffBlocks.Add(diffBlock);
+                _result.Add(diffBlock);
             }
         }
     }

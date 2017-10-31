@@ -7,7 +7,7 @@ using Comparer.Interfaces;
 
 namespace Comparer.Implementations
 {
-    class DifferenceBlock : IDiffBlock
+    public class DifferenceBlock : IDiffBlock
     {
         public int InsertStart { get; set; }
         public int InsertCount { get; set; }

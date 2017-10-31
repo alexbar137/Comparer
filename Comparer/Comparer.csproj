@@ -56,7 +56,7 @@
   <ItemGroup>
     <Compile Include="Implementations\ChangeTracker.cs" />
     <Compile Include="Implementations\CompareResult.cs" />
-    <Compile Include="Implementations\CompareService.cs" />
+    <Compile Include="Implementations\DiffPlexCompareService.cs" />
     <Compile Include="Implementations\DifferenceBlock.cs" />
     <Compile Include="Implementations\Segment.cs" />
     <Compile Include="Interfaces\ICompareResult.cs" />

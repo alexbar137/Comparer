@@ -8,6 +8,6 @@ namespace Comparer.Interfaces
 {
     public interface ICompareService
     {
-        ICompareResult Compare(ISegment segment);
+        List<IDiffBlock> Compare(ISegment segment);
     }
 }

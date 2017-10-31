@@ -9,7 +9,7 @@ using DiffPlex;
 
 namespace Comparer.Implementations
 {
-    class ChangeTracker : ISegmentComparer
+    public class ChangeTracker : ISegmentComparer
     {
         public List<ISegment> Segments { get; set; }
         ICompareService _service;
@@ -31,7 +31,7 @@ namespace Comparer.Implementations
 
 
 
-        internal void CompareSegments()
+        public void CompareSegments()
         {
             foreach (ISegment segment in Segments)
             {

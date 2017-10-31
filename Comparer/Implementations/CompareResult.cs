@@ -7,7 +7,7 @@ using Comparer.Interfaces;
 
 namespace Comparer.Implementations
 {
-    class CompareResult : ICompareResult
+    public class CompareResult : ICompareResult
     {
         public List<IDiffBlock> DiffBlocks { get; set; }
     }
