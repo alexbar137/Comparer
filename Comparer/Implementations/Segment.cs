@@ -9,12 +9,14 @@ namespace Comparer.Implementations
 {
     public class Segment : ISegment
     {
-        private List<IDiffBlock> _compareResult;
+        private IEnumerable<IDiffBlock> _compareResult;
 
         public string EditedTranslation { get; set; }
         public string OriginalTranslation { get; set; }
         public string Source { get; set; }
-        public List<IDiffBlock> CompareResult
+        public double Similarity { get; set; }
+
+        public IEnumerable<IDiffBlock> CompareResult
         {
             get
             {
@@ -23,39 +25,43 @@ namespace Comparer.Implementations
             set
             {
                 _compareResult = value;
-                if ((EditedTranslation.Length == 0 &&
-                    OriginalTranslation.Length != 0) ||
-                    (EditedTranslation.Length != 0 &&
-                    OriginalTranslation.Length == 0
-                    ))
-                {
-                    Similarity = 0;
-                }
-                else if(EditedTranslation.Length == 0 ||
-                    OriginalTranslation.Length == 0)
-                {
-                    Similarity = 100;
-                }
-                else
-                {
-                    double deletePersentage =
-                           Convert.ToDouble(_compareResult.Sum(s => s.DeleteCount)) /
-                           OriginalTranslation.Length * 100;
-                    double insertPersentage =
-                           Convert.ToDouble(_compareResult.Sum(s => s.InsertCount)) /
-                           EditedTranslation.Length * 100;
-                    Similarity = 100 - deletePersentage - insertPersentage;
-                    Similarity = Similarity > 50 ? Similarity : 0;
-                }
+                CalcSimilarity();
+                
             }
         }
-        public double Similarity { get; set; }
-
+       
         public Segment(string source, string original, string edited)
         {
             this.Source = source;
             this.OriginalTranslation = original;
             this.EditedTranslation = edited;
+        }
+
+        private void CalcSimilarity()
+        {
+            if ((String.IsNullOrEmpty(OriginalTranslation) &&
+                    !String.IsNullOrEmpty(EditedTranslation)) ||
+                    (!String.IsNullOrEmpty(OriginalTranslation) &&
+                    String.IsNullOrEmpty(EditedTranslation)))
+            {
+                Similarity = 0;
+            }
+
+            else
+            {
+                if (String.IsNullOrEmpty(OriginalTranslation) &&
+                    String.IsNullOrEmpty(EditedTranslation))
+                {
+                    Similarity = 100;
+                }
+                else
+                {
+                    double deletePersentage = (double)CompareResult.Sum(s => s.DeleteCount) / OriginalTranslation.Length * 100;
+                    double insertPersentage = (double)CompareResult.Sum(s => s.InsertCount) / EditedTranslation.Length * 100;
+                    Similarity = 100 - deletePersentage - insertPersentage;
+                    Similarity = Similarity > 50 ? Similarity : 0;
+                }
+            }
         }
     }
 }

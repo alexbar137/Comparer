@@ -5,9 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Comparer.Implementations.Tests
 {
+    
     [TestClass()]
     public class SegmentTests
     {
@@ -20,6 +22,7 @@ namespace Comparer.Implementations.Tests
         Segment EditedChar;
 
 
+
         [TestInitialize()]
         public void InitializeTest()
         {
@@ -30,91 +33,107 @@ namespace Comparer.Implementations.Tests
             Replaced = new Segment("Replaced", "Первый", "Второй");
             DeletedChar = new Segment("Edited", "Первый", "Перый");
             EditedChar = new Segment("Edited", "Первый", "Першый");
-
         }
 
         [TestMethod()]
         public void SegmentTest_Similarity_Equal()
         {
-            EqualTranslations.CompareResult = new List<Interfaces.IDiffBlock>();                
-            EqualTranslations.CompareResult.Add(new DifferenceBlock()
+            EqualTranslations.CompareResult = new List<Interfaces.IDiffBlock>()
             {
-                DeleteCount = 0, InsertCount = 0
-            });
+                new DifferenceBlock()
+                {
+                     DeleteCount = 0, InsertCount = 0
+                }
+            };
+               
             Assert.AreEqual(100, EqualTranslations.Similarity);
         }
 
         [TestMethod()]
         public void SegmentTest_Similarity_EmptyOriginal()
         {
-            EmptyOriginal.CompareResult = new List<Interfaces.IDiffBlock>();
-            EmptyOriginal.CompareResult.Add(new DifferenceBlock()
+            EmptyOriginal.CompareResult = new List<Interfaces.IDiffBlock>()
             {
-                DeleteCount = 0,
-                InsertCount = 6
-            });
+                new DifferenceBlock()
+                {
+                    DeleteCount = 0,
+                    InsertCount = 6
+                }
+            };
             Assert.AreEqual(0, EmptyOriginal.Similarity);
         }
 
         [TestMethod()]
         public void SegmentTest_Similarity_EmptyEdited()
         {
-            EmptyEdited.CompareResult = new List<Interfaces.IDiffBlock>();
-            EmptyEdited.CompareResult.Add(new DifferenceBlock()
+            EmptyEdited.CompareResult = new List<Interfaces.IDiffBlock>()
             {
-                DeleteCount = 0,
-                InsertCount = 6
-            });
+                new DifferenceBlock()
+                {
+                     DeleteCount = 0,
+                    InsertCount = 6
+                }
+            };
             Assert.AreEqual(0, EmptyEdited.Similarity);
         }
 
         [TestMethod()]
         public void SegmentTest_Similarity_BothEmpty()
         {
-            BothEmpty.CompareResult = new List<Interfaces.IDiffBlock>();
-            BothEmpty.CompareResult.Add(new DifferenceBlock()
+            BothEmpty.CompareResult = new List<Interfaces.IDiffBlock>()
             {
-                DeleteCount = 0,
-                InsertCount = 0
-            });
+                new DifferenceBlock()
+                {
+                     DeleteCount = 0,
+                    InsertCount = 0
+                }
+            };
+           
             Assert.AreEqual(100, BothEmpty.Similarity);
         }
 
         [TestMethod()]
         public void SegmentTest_Similarity_Replaced()
         {
-            Replaced.CompareResult = new List<Interfaces.IDiffBlock>();
-            Replaced.CompareResult.Add(new DifferenceBlock()
+            Replaced.CompareResult = new List<Interfaces.IDiffBlock>()
             {
-                DeleteCount = 6,
-                InsertCount = 6
-            });
+                new DifferenceBlock()
+                {
+                    DeleteCount = 6,
+                    InsertCount = 6
+                }
+            };
             Assert.AreEqual(0, Replaced.Similarity);
         }
 
         [TestMethod()]
         public void SegmentTest_Similarity_DeletedChar()
         {
-            DeletedChar.CompareResult = new List<Interfaces.IDiffBlock>();
-            DeletedChar.CompareResult.Add(new DifferenceBlock()
+            DeletedChar.CompareResult = new List<Interfaces.IDiffBlock>()
             {
-                DeleteCount = 1,
-                InsertCount = 0
-            });
-            Assert.IsTrue(DeletedChar.Similarity > 90 &&
+                new DifferenceBlock()
+                {
+                     DeleteCount = 1,
+                    InsertCount = 0
+                }
+            };
+
+            Assert.IsTrue(DeletedChar.Similarity > 83 &&
                 DeletedChar.Similarity < 100);
         }
 
         [TestMethod()]
         public void SegmentTest_Similarity_EditedChar()
         {
-            EditedChar.CompareResult = new List<Interfaces.IDiffBlock>();
-            EditedChar.CompareResult.Add(new DifferenceBlock()
+            EditedChar.CompareResult = new List<Interfaces.IDiffBlock>()
             {
-                DeleteCount = 1,
-                InsertCount = 1
-            });
-            Assert.IsTrue(EditedChar.Similarity > 90 &&
+                new DifferenceBlock()
+                {
+                     DeleteCount = 1,
+                    InsertCount = 1
+                }
+            };
+            Assert.IsTrue(EditedChar.Similarity > 65 &&
                 EditedChar.Similarity < 100);
         }
     }

@@ -11,7 +11,7 @@ namespace Comparer.Interfaces
         string Source { get; set; }
         string OriginalTranslation { get; set; }
         string EditedTranslation { get; set; }
-        List<IDiffBlock> CompareResult { get; set; }
+        IEnumerable<IDiffBlock> CompareResult { get; set; }
         double Similarity { get; set; }
     }
 }
