@@ -56,8 +56,10 @@ namespace Comparer.Implementations
                 }
                 else
                 {
-                    double deletePersentage = (double)CompareResult.Sum(s => s.DeleteCount) / OriginalTranslation.Length * 100;
-                    double insertPersentage = (double)CompareResult.Sum(s => s.InsertCount) / EditedTranslation.Length * 100;
+                    double deletePersentage = (double)CompareResult.Sum(s => s.DeleteCount) 
+                        / OriginalTranslation.Length * 100;
+                    double insertPersentage = (double)CompareResult.Sum(s => s.InsertCount) 
+                        / EditedTranslation.Length * 100;
                     Similarity = 100 - deletePersentage - insertPersentage;
                     Similarity = Similarity > 50 ? Similarity : 0;
                 }

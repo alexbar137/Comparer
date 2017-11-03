@@ -18,6 +18,10 @@ namespace Comparer.Implementations
             {
                 return _segments;
             }
+            set
+            {
+                _segments = value;
+            }
         }
         ICompareService _service;
         

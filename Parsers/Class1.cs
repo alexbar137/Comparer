@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comparer.Interfaces
+namespace Parsers
 {
-    public interface ISegmentComparer
+    public class Class1
     {
-        List<ISegment> Segments { get; set; }
     }
 }
