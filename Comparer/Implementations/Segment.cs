@@ -9,14 +9,14 @@ namespace Comparer.Implementations
 {
     public class Segment : ISegment
     {
-        private IEnumerable<IDiffBlock> _compareResult;
+        private List<IDiffBlock> _compareResult = new List<IDiffBlock>();
 
         public string EditedTranslation { get; set; }
         public string OriginalTranslation { get; set; }
         public string Source { get; set; }
         public double Similarity { get; set; }
 
-        public IEnumerable<IDiffBlock> CompareResult
+        public List<IDiffBlock> CompareResult
         {
             get
             {
@@ -32,9 +32,9 @@ namespace Comparer.Implementations
        
         public Segment(string source, string original, string edited)
         {
-            this.Source = source;
-            this.OriginalTranslation = original;
-            this.EditedTranslation = edited;
+            Source = source;
+            OriginalTranslation = original;
+            EditedTranslation = edited;
         }
 
         private void CalcSimilarity()

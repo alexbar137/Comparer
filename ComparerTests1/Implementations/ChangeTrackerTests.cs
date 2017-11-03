@@ -20,13 +20,13 @@ namespace Comparer.Implementations.Tests
         Segment BothEmpty;
         Segment EmptyEdited;
         Segment EditedChar;
-        List<Segment> Segments;
+        List<ISegment> Segments;
         
 
         [TestInitialize()]
         public void InitializeTest()
         {
-            Segments = new List<Segment>();
+            Segments = new List<ISegment>();
             EqualTranslations = new Segment("Equal", "Первый", "Первый");
             EmptyOriginal = new Segment("Empty", "", "Первый");
             EmptyEdited = new Segment("Empty", "Первый", "");

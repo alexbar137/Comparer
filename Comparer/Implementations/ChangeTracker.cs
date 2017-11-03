@@ -11,8 +11,8 @@ namespace Comparer.Implementations
 {
     public class ChangeTracker : ISegmentComparer
     {
-        private IEnumerable<ISegment> _segments;
-        public IEnumerable<ISegment> Segments
+        private List<ISegment> _segments = new List<ISegment>();
+        public List<ISegment> Segments
         {
             get
             {
@@ -22,14 +22,14 @@ namespace Comparer.Implementations
         ICompareService _service;
         
     
-        public ChangeTracker(IEnumerable<ISegment> segments, ICompareService service)
+        public ChangeTracker(List<ISegment> segments, ICompareService service)
         {
             _segments = segments as List<ISegment>;
             _service = service;
             CompareSegments();
         }
 
-        public ChangeTracker(IEnumerable<ISegment> segments)
+        public ChangeTracker(List<ISegment> segments)
         {
             _segments = segments;
             _service = new DiffPlexCompareService();

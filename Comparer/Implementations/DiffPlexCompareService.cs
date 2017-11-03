@@ -16,7 +16,7 @@ namespace Comparer.Implementations
         private Differ _diff;
         private DiffResult _diffResult;
 
-        public IEnumerable<IDiffBlock> Compare(ISegment segment)
+        public List<IDiffBlock> Compare(ISegment segment)
         {
             _result = new List<IDiffBlock>();
             _diff = new Differ();
@@ -24,7 +24,7 @@ namespace Comparer.Implementations
                 segment.EditedTranslation, false);
             GetDiffBlocks();
 
-            return _result as IEnumerable<IDiffBlock>;
+            return _result;
 
         }
 
