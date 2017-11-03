@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Parsers
+namespace Parsers.Interfaces
 {
-    public class Class1
+    public interface IParser
     {
+        List<ITUnit> Parse(string filename);
     }
 }

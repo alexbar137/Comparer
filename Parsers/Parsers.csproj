@@ -48,7 +48,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Implemenations\ParserFactory.cs" />
+    <Compile Include="Implemenations\ParserLocator.cs" />
+    <Compile Include="Implemenations\SDLParser.cs" />
+    <Compile Include="Implemenations\TUnit.cs" />
+    <Compile Include="Implemenations\XlfParser.cs" />
+    <Compile Include="Interfaces\IParser.cs" />
+    <Compile Include="Interfaces\IParserLocator.cs" />
+    <Compile Include="Interfaces\ITUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
