@@ -7,7 +7,7 @@ using Parsers.Interfaces;
 
 namespace Parsers.Implemenations
 {
-    class TUnit : ITUnit
+    public class TUnit : ITUnit
     {
         public string Id { get; set; }
         public string Source { get; set; }
