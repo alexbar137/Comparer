@@ -9,7 +9,7 @@ using DiffPlex.Model;
 
 namespace Comparer.Implementations
 {
-    class DiffPlexCompareService : ICompareService
+    public class DiffPlexCompareService : ICompareService
     {
 
         private List<IDiffBlock> _result;

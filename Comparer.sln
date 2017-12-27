@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comparer", "Comparer\Comparer.csproj", "{4B1E9D24-C1CB-4C60-8A72-0849DAF02725}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapper", "Mapper\Mapper.csproj", "{27AE28D2-7F33-4EF1-BF9A-EFB70EF4372D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapperTests", "MapperTests\MapperTests.csproj", "{D4A2595B-3C79-402B-B611-D35E2AED31D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegmentProcessor", "SegmentProcessor\SegmentProcessor.csproj", "{D4BFD4D0-DE81-4A31-A8B9-3B7DBEC3D75E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{D4A2595B-3C79-402B-B611-D35E2AED31D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4A2595B-3C79-402B-B611-D35E2AED31D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4A2595B-3C79-402B-B611-D35E2AED31D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4BFD4D0-DE81-4A31-A8B9-3B7DBEC3D75E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4BFD4D0-DE81-4A31-A8B9-3B7DBEC3D75E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4BFD4D0-DE81-4A31-A8B9-3B7DBEC3D75E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4BFD4D0-DE81-4A31-A8B9-3B7DBEC3D75E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

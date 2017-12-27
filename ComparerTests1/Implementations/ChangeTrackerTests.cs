@@ -41,8 +41,8 @@ namespace Comparer.Implementations.Tests
         public void ChangeTracker_NoDiffBlocks_Equal()
         {
             Segments.Add(EqualTranslations);
-            ChangeTracker c = new ChangeTracker(Segments);
-            IDiffBlock t = c.Segments.FirstOrDefault().CompareResult.FirstOrDefault();
+            ChangeTracker c = new ChangeTracker();
+            IDiffBlock t = c.CompareSegments(Segments).FirstOrDefault().CompareResult.FirstOrDefault();
             Assert.AreEqual(null, t);
         }
 
@@ -50,8 +50,8 @@ namespace Comparer.Implementations.Tests
         public void ChangeTracker_0DeleteCount_EmptyOriginal()
         {
             Segments.Add(EmptyOriginal);
-            ChangeTracker c = new ChangeTracker(Segments);
-            int t = c.Segments.FirstOrDefault().CompareResult.FirstOrDefault().DeleteCount;
+            ChangeTracker c = new ChangeTracker();
+            int t = c.CompareSegments(Segments).FirstOrDefault().CompareResult.FirstOrDefault().DeleteCount;
             Assert.AreEqual(0, t);
         }
 
@@ -59,8 +59,8 @@ namespace Comparer.Implementations.Tests
         public void ChangeTracker_6DeleteCount_EmptyEdited()
         {
             Segments.Add(EmptyEdited);
-            ChangeTracker c = new ChangeTracker(Segments);
-            int t = c.Segments.FirstOrDefault().CompareResult.FirstOrDefault().DeleteCount;
+            ChangeTracker c = new ChangeTracker();
+            int t = c.CompareSegments(Segments).FirstOrDefault().CompareResult.FirstOrDefault().DeleteCount;
             Assert.AreEqual(6, t);
         }
 
@@ -68,8 +68,8 @@ namespace Comparer.Implementations.Tests
         public void ChangeTracker_6InsertCount_EmptyOriginal()
         {
             Segments.Add(EmptyOriginal);
-            ChangeTracker c = new ChangeTracker(Segments);
-            int t = c.Segments.FirstOrDefault().CompareResult.FirstOrDefault().InsertCount;
+            ChangeTracker c = new ChangeTracker();
+            int t = c.CompareSegments(Segments).FirstOrDefault().CompareResult.FirstOrDefault().InsertCount;
             Assert.AreEqual(6, t);
         }
     }

@@ -11,43 +11,30 @@ namespace Comparer.Implementations
 {
     public class ChangeTracker : ISegmentComparer
     {
-        private List<ISegment> _segments = new List<ISegment>();
-        public List<ISegment> Segments
-        {
-            get
-            {
-                return _segments;
-            }
-            set
-            {
-                _segments = value;
-            }
-        }
+
         ICompareService _service;
         
     
-        public ChangeTracker(List<ISegment> segments, ICompareService service)
+        public ChangeTracker(ICompareService service)
         {
-            _segments = segments as List<ISegment>;
+            
             _service = service;
-            CompareSegments();
         }
 
-        public ChangeTracker(List<ISegment> segments)
+        public ChangeTracker()
         {
-            _segments = segments;
-            _service = new DiffPlexCompareService();
-            CompareSegments();
+           _service = new DiffPlexCompareService();
         }
 
 
 
-        private void CompareSegments()
+        public List<ISegment> CompareSegments(List<ISegment> segments)
         {
-            foreach (ISegment segment in Segments)
+            foreach (ISegment segment in segments)
             {
                 segment.CompareResult = _service.Compare(segment);
             }
+            return segments;
         }
 
     }
